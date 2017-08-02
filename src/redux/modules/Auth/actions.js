@@ -27,15 +27,13 @@ export const authFailure = (errors) => {
 
 // async functions
 
-export const signup = (user, router) => {
+export const signup = (user, router, token) => {
   return dispatch => {
     dispatch(authRequest())
-    return ApiServices.post('/users', user)
+    return ApiServices.post('/users', user, token)
       .then(response => {
-        const { user, token } = response
-        localStorage.setItem('token', token)
-        dispatch(authSuccess(user, token))
-        dispatch(reset('signup'))
+        const { user } = response
+        alert("User: " + user.username + " has been successfully created.")
         router.history.replace('/dashboard')
       })
       .catch((errors) => {

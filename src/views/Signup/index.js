@@ -12,7 +12,7 @@ class Signup extends Component {
     router: PropTypes.object
   }
 
-  handleSignup = data => this.props.signup({user: data}, this.context.router)
+  handleSignup = data => this.props.signup({user: data}, this.context.router, this.props.token)
 
   render() {
     return(
@@ -26,7 +26,8 @@ class Signup extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    authErrors: state.auth.errors
+    authErrors: state.auth.errors,
+    token: state.auth.token
   }
 }
 
