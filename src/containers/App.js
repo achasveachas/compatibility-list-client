@@ -55,8 +55,14 @@ class App extends Component {
                 <Welcome />
               )
             )}/>
-            <Route exact path="/signup" component={Signup} isAuthenticated={this.props.isAuthenticated} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" render={() => (
+              this.props.isAuthenticated ? (
+                <Signup />
+              ) : (
+                  <Redirect to="/" />
+                )
+            )} />
             <Route exact path="/dashboard" render={() => (
               this.props.isAuthenticated ? (
                 <Dashboard />
