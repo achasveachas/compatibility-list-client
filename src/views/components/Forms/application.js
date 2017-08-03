@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
-import 'react-datepicker/dist/react-datepicker.css';
 
 
 const form = reduxForm({
@@ -15,21 +12,11 @@ const renderField = field => (
 )
 
 const renderCheckbox = field => (
-    <input type="checkbox" className="uk-checkbox uk-margin-left" defaultChecked={field.input.value} {...field.input}/>
+  <input type="checkbox" className="uk-checkbox uk-margin-right" defaultChecked={field.input.value} {...field.input}/>
 )
 
-const renderDatePicker = ({input, placeholder, defaultValue, meta: {touched, error} }) => (
-    <DatePicker {...input} className="uk-input uk-width-small uk-margin-left uk-margin-right uk-form-controls" dateForm="MM/DD/YYYY" selected={input.value ? moment(input.value) : null} />
-);
 
 class ApplicationForm extends Component {
-
-  constructor (props) {
-    super(props)
-    this.state = {
-      startDate: moment()
-    };
-  }
 
   componentWillMount() {
     this.handleInitialize()
@@ -38,15 +25,17 @@ class ApplicationForm extends Component {
   handleInitialize() {
     const currentApplication = this.props.currentApplication
     const initData = {
-      "company": currentApplication.company,
-      "contact_name": currentApplication.contact_name,
-      "contact_title": currentApplication.contact_title,
-      "date": currentApplication.date,
-      "action": currentApplication.action,
-      "job_title": currentApplication.job_title,
-      "job_url": currentApplication.job_url,
+      "software": currentApplication.software,
+      "gateway": currentApplication.gateway,
+      "omaha": currentApplication.omaha,
+      "nashville": currentApplication.nashville,
+      "north": currentApplication.north,
+      "elavon": currentApplication.elavon,
+      "tsys": currentApplication.tsys,
+      "other": currentApplication.other,
       "notes": currentApplication.notes,
-      "complete": currentApplication.complete
+      "agent": currentApplication.agent,
+      "ticket": currentApplication.ticket
     }
     this.props.initialize(initData)
   }
@@ -59,28 +48,54 @@ class ApplicationForm extends Component {
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
           <div className="uk-margin uk-position-center">
-            <h3 className="uk-heading-line uk-text-center uk-padding"><span>Who am I applying with?</span></h3>
-            <label className="uk-form-label">Company:</label>
+            <h1 className="uk-heading-line uk-text-center uk-padding"><span>Software Information</span></h1>
+            <label className="uk-form-label">Software:</label>
             <Field
-              name="company"
+              name="software"
               component={renderField}
             />
-            <label className="uk-form-label">Contact Name:</label>
+            <label className="uk-form-label">Works Through Gateway:</label>
             <Field
-              name="contact_name"
+              name="gateway"
               component={renderField}
             />
-            <label className="uk-form-label">Contact Title:</label>
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>Compatible With The Following Processors:</span></h3>
+            <label className="uk-form-label">Omaha: </label>
             <Field
-              name="contact_title"
-              component={renderField}
+              name="omaha"
+              component={renderCheckbox}
+            />
+            <label className="uk-form-label">Nashville: </label>
+            <Field
+              name="nashville"
+              component={renderCheckbox}
+            />
+            <label className="uk-form-label">North: </label>
+            <Field
+              name="north"
+              component={renderCheckbox}
+            />
+            <label className="uk-form-label">BuyPass: </label>
+            <Field
+              name="buypass"
+              component={renderCheckbox}
+            />
+            <label className="uk-form-label">Elavon: </label>
+            <Field
+              name="elavon"
+              component={renderCheckbox}
+            />
+            <label className="uk-form-label">TSYS: </label>
+            <Field
+              name="tsys"
+              component={renderCheckbox}
+            />
+            <label className="uk-form-label">Other (please elaborate in the notes): </label>
+            <Field
+              name="other"
+              component={renderCheckbox}
             />
             <h3 className="uk-heading-line uk-text-center uk-padding"><span>What are we doing?</span></h3>
-            <label className="uk-form-label">Date:</label>
-            <Field
-              name="date"
-              component={renderDatePicker}
-            />
             <label className="uk-form-label">Action:</label>
             <Field
               name="action"

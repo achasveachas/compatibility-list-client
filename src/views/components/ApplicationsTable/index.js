@@ -144,7 +144,6 @@ class ApplicationsTable extends Component {
           contentLabel="Modal"
           onRequestClose={this.closeModal}
           style={modalStyle}>
-          <h1 className="uk-heading-line uk-text-center uk-padding"><span>View/Edit Application</span></h1>
           <ApplicationForm onSubmit={this.handleUpdateApplication}/>
           <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>
         </Modal>
