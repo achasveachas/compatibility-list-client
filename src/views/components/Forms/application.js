@@ -95,32 +95,21 @@ class ApplicationForm extends Component {
               name="other"
               component={renderCheckbox}
             />
-            <h3 className="uk-heading-line uk-text-center uk-padding"><span>What are we doing?</span></h3>
-            <label className="uk-form-label">Action:</label>
-            <Field
-              name="action"
-              component={renderField}
-            />
-            <label className="uk-form-label">Completed?</label>
-            <Field
-              name="complete"
-              component={renderCheckbox}
-            />
-            <h3 className="uk-heading-line uk-text-center uk-padding"><span>What kind of job is this for?</span></h3>
-            <label className="uk-form-label">Job Title:</label>
-            <Field
-              name="job_title"
-              component={renderField}
-            />
-            <label className="uk-form-label">Job URL:</label>
-            <Field
-              name="job_url"
-              component={renderField}
-            />
-          <label className="uk-form-label">Notes:</label>
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>Additional Info</span></h3>
+            <label className="uk-form-label">Notes:</label>
             <Field
               name="notes"
-              type="textarea"
+              component={renderField}
+            />
+            <h3 className="uk-heading-line uk-text-center uk-padding"><span>What kind of job is this for?</span></h3>
+            <label className="uk-form-label">Agent Requesting:</label>
+            <Field
+              name="agent"
+              component={renderField}
+            />
+            <label className="uk-form-label">Ticket Number:</label>
+            <Field
+              name="ticket"
               component={renderField}
             />
           </div>
