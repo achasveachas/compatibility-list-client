@@ -85,7 +85,7 @@ class ApplicationsTable extends Component {
 
       RenderedRows = this.filteredApplications()
       .sort((a, b) => new Date(b.date) - new Date(a.date))
-      .map((app, index) => <ApplicationRow key={index} application={app} user_id={this.props.currentUser.id} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
+      .map((app, index) => <ApplicationRow key={index} application={app} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
     }
 
     const modalStyle = {
@@ -105,7 +105,7 @@ class ApplicationsTable extends Component {
                 <input
                   className="uk-input uk-width-medium"
                   type="text"
-                  placeholder="Filter By Company Name"
+                  placeholder="Filter By Software Name"
                   value={this.state.filter}
                   onChange={this.handleFilterChange}
                 />
@@ -114,13 +114,16 @@ class ApplicationsTable extends Component {
             <table className="uk-table uk-table-hover uk-table-divider">
               <thead>
                 <tr>
-                  <th>Company</th>
-                  <th>Job Title</th>
-                  <th>Contact</th>
-                  <th>Date</th>
-                  <th>Action</th>
+                  <th>Software</th>
+                  <th>Gateway</th>
+                  <th className="uk-table-shrink uk-table-middle">Omaha</th>
+                  <th className="uk-table-shrink uk-table-middle">Nashville</th>
+                  <th className="uk-table-shrink uk-table-middle">North</th>
+                  <th className="uk-table-shrink uk-table-middle">Buypass</th>
+                  <th className="uk-table-shrink uk-table-middle">Elavon</th>
+                  <th className="uk-table-shrink uk-table-middle">TSYS</th>
+                  <th className="uk-table-shrink uk-table-middle">Other</th>
                   <th className="uk-table-expand">Notes</th>
-                  <th className="uk-table-shrink uk-table-middle">Completed</th>
                   <th className="uk-table-shrink"></th>
                 </tr>
               </thead>
