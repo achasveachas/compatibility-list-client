@@ -21,9 +21,8 @@ class ApplicationsTable extends Component {
   }
 
   componentDidMount() {
-    const user_id = this.props.currentUser.id
 
-    return ApiServices.get("/users/" + user_id + "/applications")
+    return ApiServices.get("/applications")
      .then(response => {
        this.props.gotApplications(response.applications)
      })
@@ -42,8 +41,8 @@ class ApplicationsTable extends Component {
   }
 
 
-  removeItem = (user_id, app_id) => {
-    return ApiServices.delete("/users/" + user_id + "/applications/" + app_id, this.props.token)
+  removeItem = (app_id) => {
+    return ApiServices.delete("/applications/" + app_id, this.props.token)
       .then(() => {
         this.props.deleteApplication(app_id)
       })
@@ -53,9 +52,8 @@ class ApplicationsTable extends Component {
   }
 
   handleUpdateApplication = (data) => {
-    const user_id = this.props.currentUser.id
     const app_id = this.props.currentApplication.id
-    return ApiServices.patch("/users/" + user_id + "/applications/" + app_id, data, this.props.token)
+    return ApiServices.patch("/applications/" + app_id, data, this.props.token)
       .then(response => {
         const { application } = response
         this.props.editApplication(application)
