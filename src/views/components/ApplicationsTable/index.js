@@ -22,7 +22,7 @@ class ApplicationsTable extends Component {
 
   componentDidMount() {
 
-    return ApiServices.get("/applications")
+    return ApiServices.get("/applications", this.props.token)
      .then(response => {
        this.props.gotApplications(response.applications)
      })

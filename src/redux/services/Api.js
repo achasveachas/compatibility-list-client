@@ -15,10 +15,12 @@ const parseResponse = (response) => {
 
 export default {
 
-  get(url) {
+  get(url, token) {
     const headers =  {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer: ${token}`
+
     }
     return fetch(`${BASE_URL}${url}`, {
       method: 'GET',
