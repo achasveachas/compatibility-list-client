@@ -11,6 +11,10 @@ const renderField = field => (
     <input className="uk-input uk-width-small uk-margin-left uk-margin-right uk-form-controls" {...field.input}/>
 )
 
+const renderTextBox = field => (
+  <textarea className="uk-textarea uk-form-width-large uk-margin-left uk-margin-bottom uk-margin-right uk-form-controls" rows="5" {...field.input} />
+)
+
 const renderCheckbox = field => (
   <input type="checkbox" className="uk-checkbox uk-margin-right" defaultChecked={field.input.value} {...field.input}/>
 )
@@ -30,9 +34,9 @@ class ApplicationForm extends Component {
       "omaha": currentApplication.omaha,
       "nashville": currentApplication.nashville,
       "north": currentApplication.north,
+      "buypass": currentApplication.buypass,
       "elavon": currentApplication.elavon,
       "tsys": currentApplication.tsys,
-      "other": currentApplication.other,
       "notes": currentApplication.notes,
       "agent": currentApplication.agent,
       "ticket": currentApplication.ticket
@@ -90,18 +94,12 @@ class ApplicationForm extends Component {
               name="tsys"
               component={renderCheckbox}
             />
-            <label className="uk-form-label">Other (please elaborate in the notes): </label>
-            <Field
-              name="other"
-              component={renderCheckbox}
-            />
             <h3 className="uk-heading-line uk-text-center uk-padding"><span>Additional Info</span></h3>
             <label className="uk-form-label">Notes:</label>
             <Field
               name="notes"
-              component={renderField}
+              component={renderTextBox}
             />
-            <h3 className="uk-heading-line uk-text-center uk-padding"><span>What kind of job is this for?</span></h3>
             <label className="uk-form-label">Agent Requesting:</label>
             <Field
               name="agent"
@@ -113,7 +111,7 @@ class ApplicationForm extends Component {
               component={renderField}
             />
           </div>
-          <button action="submit" className="uk-button uk-position-bottom-center uk-margin-bottom uk-button-primary">Save</button>
+          <button action="submit" className="uk-button uk-position-bottom-right uk-margin-bottom uk-margin-right uk-button-primary">Save</button>
         </form>
       </div>
     )
