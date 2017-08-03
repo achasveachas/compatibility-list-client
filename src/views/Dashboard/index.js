@@ -30,8 +30,7 @@ class Dashboard extends Component {
   }
 
   handleNewApplication = (data) => {
-    const user_id = this.props.currentUser.id
-    return ApiServices.post("/users/" + user_id + "/applications", data, this.props.token)
+    return ApiServices.post("/applications", data, this.props.token)
       .then(response => {
         const { application } = response
         this.props.addApplication(application)
