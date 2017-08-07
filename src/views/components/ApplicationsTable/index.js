@@ -84,7 +84,17 @@ class ApplicationsTable extends Component {
     if (this.filteredApplications().length > 0) {
 
       RenderedRows = this.filteredApplications()
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .sort((a, b) => {
+              const softwareA = a.software.toUpperCase()
+              const softwareB = b.software.toUpperCase()
+              if (softwareA < softwareB) {
+                  return -1
+              }
+              if (softwareA > softwareB) {
+                  return 1
+              }
+              return 0
+          })
       .map((app, index) => <ApplicationRow key={index} application={app} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
     }
 
