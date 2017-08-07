@@ -95,7 +95,7 @@ class ApplicationsTable extends Component {
               }
               return 0
           })
-      .map((app, index) => <ApplicationRow key={index} application={app} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
+        .map((app, index) => <ApplicationRow key={index} application={app} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
     }
 
     const modalStyle = {
