@@ -145,8 +145,8 @@ class ApplicationsTable extends Component {
           </div>
         :
           <div>
-            <h2 className="uk-heading-line uk-text-center uk-text-capitalize"><span>You do not have any applications yet</span></h2>
-            <h3 className="uk-heading-line uk-text-center uk-text-capitalize"><span>Click on the "New Application" button to add a new application</span></h3>
+            <h2 className="uk-heading-line uk-text-center uk-text-capitalize"><span>There are no Compatibility Requests at this time</span></h2>
+            <h3 className="uk-heading-line uk-text-center uk-text-capitalize"><span>Click on the "New Request" button to add a new application</span></h3>
           </div>
         }
         <Modal
