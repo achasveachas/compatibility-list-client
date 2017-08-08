@@ -5,7 +5,7 @@ const NewApplicationButton = (props) => {
     <button
     className="uk-button uk-button-primary uk-margin-medium uk-margin-left"
     onClick={props.onClick}>
-      New Application
+      New Request
     </button>
   )
 }
