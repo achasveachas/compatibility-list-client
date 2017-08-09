@@ -20,7 +20,7 @@ function ApplicationRow(props){
           <td onClick={handleClick}>{props.application.tsys ? <span>&#x2713;</span> : <span> </span>}</td>
           <td onClick={handleClick}>{props.application.other ? <span>&#x2713;</span> : <span> </span>}</td>
           <td onClick={handleClick}>{props.application.notes}</td>
-          <td onClick={handleClick}>{props.application.updated_at}</td>
+          <td onClick={handleClick}>{new Date(props.application.updated_at).toLocaleDateString()}</td>
           <td><button className="uk-button uk-button-danger uk-button-small" onClick={handleDelete}>Delete</button></td>
         </tr>)
 }
