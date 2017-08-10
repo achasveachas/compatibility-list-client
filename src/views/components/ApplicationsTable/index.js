@@ -103,7 +103,7 @@ class ApplicationsTable extends Component {
               }
               return 0
           })
-        .map((app, index) => <ApplicationRow key={index} application={app} onClick={this.handleRowClick} onDelete={this.removeItem}/>)
+        .map((app, index) => <ApplicationRow key={index} application={app} onClick={this.handleRowClick}/>)
     }
 
     const modalStyle = {
@@ -143,7 +143,6 @@ class ApplicationsTable extends Component {
                   <th className="uk-table-shrink uk-table-middle">Other</th>
                   <th className="uk-table-expand uk-table-middle">Notes</th>
                   <th className="uk-table-shrink uk-table-middle">Last Updated At:</th>
-                  <th className="uk-table-shrink"></th>
                 </tr>
               </thead>
               <tbody>

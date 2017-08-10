@@ -2,11 +2,6 @@ import React from 'react'
 
 function ApplicationRow(props){
   const handleClick = () => props.onClick(props.application.id)
-  const handleDelete = () => {
-    if (confirm("Are you sure you want to delete this application?\nThis action can not be undone.")) {
-      props.onDelete(props.application.id)
-    }
-  }
 
   return (
         <tr>
@@ -21,7 +16,6 @@ function ApplicationRow(props){
           <td onClick={handleClick}>{props.application.other ? <span>&#x2713;</span> : <span> </span>}</td>
           <td onClick={handleClick}>{props.application.notes}</td>
           <td onClick={handleClick}>{new Date(props.application.updated_at).toLocaleDateString()}</td>
-          <td><button className="uk-button uk-button-danger uk-button-small" onClick={handleDelete}>Delete</button></td>
         </tr>)
 }
 export default ApplicationRow
