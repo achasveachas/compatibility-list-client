@@ -6,6 +6,7 @@ import { reset, SubmissionError } from 'redux-form';
 import { gotApplications, setCurrentApplication, deleteApplication, editApplication } from '../../../redux/modules/Applications/actions'
 import ApiServices from '../../../redux/services/Api'
 import ApplicationRow from '../ApplicationRow'
+import DeleteApplicationButton from '../DeleteApplicationButton'
 import ApplicationForm from '../../components/Forms/application'
 
 
@@ -46,9 +47,16 @@ class ApplicationsTable extends Component {
       .then(() => {
         this.props.deleteApplication(app_id)
       })
+      .then(() => this.closeModal())
       .catch((errors) => {
         console.log(errors);
       })
+  }
+
+  handleDelete = () => {
+    if (confirm("Are you sure you want to delete this application?\nThis action can not be undone.")) {
+      this.removeItem(this.props.currentApplication.id)
+    }
   }
 
   handleUpdateApplication = (data) => {
@@ -157,6 +165,7 @@ class ApplicationsTable extends Component {
           style={modalStyle}>
           <ApplicationForm onSubmit={this.handleUpdateApplication}/>
           <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>
+          <DeleteApplicationButton onClick={this.handleDelete} />
         </Modal>
       </div>
     )
