@@ -27,6 +27,7 @@ class UserForm extends Component {
       username: "",
       password: "",
       name: "",
+      admin: false,
       usernameErrors: {},
       passwordErrors: {}
     }
@@ -45,6 +46,10 @@ class UserForm extends Component {
         passwordErrors: validate({password: event.target.value}),
         password: event.target.value
       })
+    } else if (event.target.name === 'admin') {
+      this.setState({
+        admin: event.target.value
+      })
     }
   }
 
@@ -52,6 +57,7 @@ class UserForm extends Component {
     const {handleSubmit, errors} = this.props
     const renderedErrorsLi = errors.map((error, i) => <li key={i}>{error}</li>)
     let NameField;
+    let adminCheckbox
     if (this.props.action === 'signup') {
       NameField = <div>
         <label className="uk-form-label" htmlFor="name">Name (optional)</label>
@@ -67,6 +73,18 @@ class UserForm extends Component {
               placeholder="Name"
             /><br /><br />
           </div>
+        </div>
+      adminCheckbox = <div>
+          <label className="uk-form-label" htmlFor="admin">Administrator</label>
+          <Field
+            name="admin"
+            value={this.state.admin}
+            onChange={this.handleChange.bind(this)}
+            className="uk-checkbox"
+            component="input"
+            id="admin"
+            type="checkbox"
+          />
         </div>
     }
     return (
@@ -101,7 +119,8 @@ class UserForm extends Component {
                 placeholder="Password"
               /><br />
             {!!this.state.passwordErrors.password ? <small className="uk-alert-danger">{this.state.passwordErrors.password}</small> : <small><font color="white">.</font></small>}
-          </div><br />
+          </div>
+          { adminCheckbox }
           <input type="submit" className="uk-button uk-button-default uk-position-bottom-center" value={this.props.action === "signup" ? "Create User" : "Log In"} />
         </div>
       </form>
