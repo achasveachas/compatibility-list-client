@@ -57,10 +57,10 @@ class App extends Component {
             )}/>
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" render={() => (
-              this.props.isAuthenticated ? (
+              this.props.currentUser && this.props.currentUser.admin ? (
                 <Signup />
               ) : (
-                  <Redirect to="/" />
+                  <Redirect to="/dashboard" />
                 )
             )} />
             <Route exact path="/dashboard" render={() => (
