@@ -7,6 +7,7 @@ import { addApplication, clearCurrentApplication } from '../../redux/modules/App
 import ApiServices from '../../redux/services/Api'
 import ApplicationsTable from '../components/ApplicationsTable'
 import NewApplicationButton from '../components/NewApplicationButton'
+import ExportToExcelButton from '../components/ExportToExcelButton'
 import ApplicationForm from '../components/Forms/application'
 
 class Dashboard extends Component {
@@ -44,6 +45,16 @@ class Dashboard extends Component {
 
   }
 
+  getExcel = () => {
+    return ApiServices.getExcel("/applications", this.props.token)
+      .then(response => window.open(response.file))
+      .catch((errors) => {
+        console.log(errors)
+        throw new SubmissionError(errors)
+      })
+
+  }
+
   render() {
     const modalStyle = {
       overlay: {
@@ -55,9 +66,11 @@ class Dashboard extends Component {
     return (
       <div>
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>My Job Dashboard</span></h1>
-        <NewApplicationButton onClick={this.openApplicationForm}/>
+        <NewApplicationButton onClick={this.openApplicationForm} />
+        <ExportToExcelButton onClick={this.getExcel} />
         <ApplicationsTable />
-        <NewApplicationButton onClick={this.openApplicationForm}/>
+        <NewApplicationButton onClick={this.openApplicationForm} />
+        <ExportToExcelButton onClick={this.getExcel} />
         <Modal
           isOpen={this.state.modalIsOpen}
           contentLabel="Modal"
