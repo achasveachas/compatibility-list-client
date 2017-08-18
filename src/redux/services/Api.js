@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch'
+import { saveAs } from 'file-saver'
 
 const BASE_URL = 'http://localhost:3000/api/v1'
 
@@ -31,13 +32,17 @@ export default {
 
   getExcel(url, token) {
     const headers =  {
+      'Content-Type': 'application/xlsx',
       'Authorization': `Bearer: ${token}`
 
     }
     return fetch(`${BASE_URL}${url}.xlsx`, {
       method: 'GET',
-      headers: headers
+      headers: headers,
+      responseType: 'blob'
     })
+    .then(response => response.blob())
+    .then((blob) => saveAs(blob, 'compatibility_list.xlsx'))
   },
 
   post(url, data ={}, token) {
