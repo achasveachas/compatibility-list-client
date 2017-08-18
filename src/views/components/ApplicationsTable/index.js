@@ -132,8 +132,8 @@ class ApplicationsTable extends Component {
             <table className="uk-table uk-table-hover uk-table-divider">
               <thead>
                 <tr>
-                  <th>Software</th>
-                  <th>Gateway</th>
+                  <th className="uk-table-middle">Software</th>
+                  <th className="uk-table-middle">Gateway</th>
                   <th className="uk-table-shrink uk-table-middle">Omaha</th>
                   <th className="uk-table-shrink uk-table-middle">Nashville</th>
                   <th className="uk-table-shrink uk-table-middle">North</th>
