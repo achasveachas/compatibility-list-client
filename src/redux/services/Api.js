@@ -29,6 +29,17 @@ export default {
     .then(parseResponse)
   },
 
+  getExcel(url, token) {
+    const headers =  {
+      'Authorization': `Bearer: ${token}`
+
+    }
+    return fetch(`${BASE_URL}${url}.xlsx`, {
+      method: 'GET',
+      headers: headers
+    })
+  },
+
   post(url, data ={}, token) {
     const body = JSON.stringify(data)
 
