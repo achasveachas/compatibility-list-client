@@ -38,6 +38,7 @@ class ApplicationForm extends Component {
       "elavon": currentApplication.elavon,
       "tsys": currentApplication.tsys,
       "notes": currentApplication.notes,
+      "source": currentApplication.source,
       "agent": currentApplication.agent,
       "ticket": currentApplication.ticket
     }
@@ -99,6 +100,11 @@ class ApplicationForm extends Component {
             <Field
               name="notes"
               component={renderTextBox}
+            />
+            <label className="uk-form-label">Source:</label>
+            <Field
+              name="source"
+              component={renderField}
             />
             <label className="uk-form-label">Agent Requesting:</label>
             <Field
