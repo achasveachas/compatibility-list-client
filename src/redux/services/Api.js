@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 import { saveAs } from 'file-saver'
 
-const BASE_URL = 'http://localhost:3000/api/v1'
+const BASE_URL = 'http://fps-compatibility-api.herokuapp.com/api/v1'
 
 const parseResponse = (response) => {
   return response.json()
