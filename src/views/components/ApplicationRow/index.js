@@ -15,6 +15,7 @@ function ApplicationRow(props){
           <td onClick={handleClick}>{props.application.tsys ? <span>&#x2713;</span> : <span> </span>}</td>
           <td onClick={handleClick}>{props.application.other ? <span>&#x2713;</span> : <span> </span>}</td>
           <td onClick={handleClick}>{props.application.notes}</td>
+          <td onClick={handleClick}>{props.application.source}</td>
           <td onClick={handleClick}>{new Date(props.application.updated_at).toLocaleDateString()}</td>
         </tr>)
 }
