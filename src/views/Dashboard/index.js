@@ -65,7 +65,7 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        <h1 className="uk-heading-line uk-text-center uk-padding"><span>My Job Dashboard</span></h1>
+        <h1 className="uk-heading-line uk-text-center uk-padding"><span>Software Compatibility Requests</span></h1>
         <NewApplicationButton onClick={this.openApplicationForm} />
         <ExportToExcelButton onClick={this.getExcel} />
         <ApplicationsTable />
