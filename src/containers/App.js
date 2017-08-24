@@ -38,7 +38,7 @@ class App extends Component {
       this.props.authenticate(token)
     } else {
       // Ping the API server in case it hasn't been used in 30 minutes and Heroku put it to sleep
-      fetch('http://localhost:3000/api/v1')
+      fetch('http://fps-compatibility-api.herokuapp.com/api/v1')
     }
   }
 
