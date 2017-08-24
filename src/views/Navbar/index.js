@@ -34,7 +34,7 @@ class Navbar extends Component {
               <div className="uk-navbar-left">
                 <ul className="uk-navbar-nav uk-iconnav">
                   <li><NavLink to="/">Home</NavLink></li>
-                  { this.props.admin ? <li><NavLink to="/signup">Add User</NavLink></li> : null }
+                  {this.props.admin ? <li><NavLink to="/admin/new_user">Add User</NavLink></li> : null }
                   <li><NavLink to="/" onClick={this.handleLogout}>Log Out</NavLink></li>
                 </ul>
               </div>

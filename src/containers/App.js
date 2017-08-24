@@ -56,7 +56,7 @@ class App extends Component {
               )
             )}/>
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" render={() => (
+            <Route exact path="/admin/new_user" render={() => (
               this.props.currentUser && this.props.currentUser.admin ? (
                 <Signup />
               ) : (
