@@ -52,72 +52,74 @@ class ApplicationForm extends Component {
     return (
       <div>
         <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          <div className="uk-margin uk-position-center">
-            <h1 className="uk-heading-line uk-text-center uk-padding"><span>Software Information</span></h1>
-            <label className="uk-form-label">Software:</label>
-            <Field
-              name="software"
-              component={renderField}
-            />
-            <label className="uk-form-label">Works Through Gateway:</label>
-            <Field
-              name="gateway"
-              component={renderField}
-            />
-            <h3 className="uk-heading-line uk-text-center uk-padding"><span>Compatible With The Following Processors:</span></h3>
-            <label className="uk-form-label">Omaha: </label>
-            <Field
-              name="omaha"
-              component={renderCheckbox}
-            />
-            <label className="uk-form-label">Nashville: </label>
-            <Field
-              name="nashville"
-              component={renderCheckbox}
-            />
-            <label className="uk-form-label">North: </label>
-            <Field
-              name="north"
-              component={renderCheckbox}
-            />
-            <label className="uk-form-label">BuyPass: </label>
-            <Field
-              name="buypass"
-              component={renderCheckbox}
-            />
-            <label className="uk-form-label">Elavon: </label>
-            <Field
-              name="elavon"
-              component={renderCheckbox}
-            />
-            <label className="uk-form-label">TSYS: </label>
-            <Field
-              name="tsys"
-              component={renderCheckbox}
-            />
-            <h3 className="uk-heading-line uk-text-center uk-padding"><span>Additional Info</span></h3>
-            <label className="uk-form-label">Notes:</label>
-            <Field
-              name="notes"
-              component={renderTextBox}
-            />
-            <label className="uk-form-label">Source:</label>
-            <Field
-              name="source"
-              component={renderField}
-            />
-            <label className="uk-form-label">Agent Requesting:</label>
-            <Field
-              name="agent"
-              component={renderField}
-            />
-            <label className="uk-form-label">Ticket Number:</label>
-            <Field
-              name="ticket"
-              component={renderField}
-            />
-          </div>
-          <button action="submit" className="uk-button uk-position-bottom-right uk-margin-bottom uk-margin-right uk-button-primary">Save</button>
+          <fieldset disabled={!this.props.admin} style={{border: 0}}>
+            <div className="uk-margin uk-position-center">
+              <h1 className="uk-heading-line uk-text-center uk-padding"><span>Software Information</span></h1>
+              <label className="uk-form-label">Software:</label>
+              <Field
+                name="software"
+                component={renderField}
+              />
+              <label className="uk-form-label">Works Through Gateway:</label>
+              <Field
+                name="gateway"
+                component={renderField}
+              />
+              <h3 className="uk-heading-line uk-text-center uk-padding"><span>Compatible With The Following Processors:</span></h3>
+              <label className="uk-form-label">Omaha: </label>
+              <Field
+                name="omaha"
+                component={renderCheckbox}
+              />
+              <label className="uk-form-label">Nashville: </label>
+              <Field
+                name="nashville"
+                component={renderCheckbox}
+              />
+              <label className="uk-form-label">North: </label>
+              <Field
+                name="north"
+                component={renderCheckbox}
+              />
+              <label className="uk-form-label">BuyPass: </label>
+              <Field
+                name="buypass"
+                component={renderCheckbox}
+              />
+              <label className="uk-form-label">Elavon: </label>
+              <Field
+                name="elavon"
+                component={renderCheckbox}
+              />
+              <label className="uk-form-label">TSYS: </label>
+              <Field
+                name="tsys"
+                component={renderCheckbox}
+              />
+              <h3 className="uk-heading-line uk-text-center uk-padding"><span>Additional Info</span></h3>
+              <label className="uk-form-label">Notes:</label>
+              <Field
+                name="notes"
+                component={renderTextBox}
+              />
+              <label className="uk-form-label">Source:</label>
+              <Field
+                name="source"
+                component={renderField}
+              />
+              <label className="uk-form-label">Agent Requesting:</label>
+              <Field
+                name="agent"
+                component={renderField}
+              />
+              <label className="uk-form-label">Ticket Number:</label>
+              <Field
+                name="ticket"
+                component={renderField}
+              />
+            </div>
+            <button action="submit" className="uk-button uk-position-bottom-right uk-margin-bottom uk-margin-right uk-button-primary">Save</button>
+          </fieldset>
         </form>
       </div>
     )
@@ -125,7 +127,10 @@ class ApplicationForm extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { currentApplication: state.applications.currentApplication }
+  return { 
+    currentApplication: state.applications.currentApplication,
+    admin: state.auth.currentUser.admin 
+  }
 }
 
 ApplicationForm = connect(mapStateToProps)(form(ApplicationForm))
