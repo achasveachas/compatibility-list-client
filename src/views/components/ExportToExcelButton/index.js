@@ -5,7 +5,7 @@ const ExportToExcelButton = (props) => {
     <button
     className="uk-button uk-button-secondary uk-margin-medium uk-margin-left"
     onClick={props.onClick}>
-      Export To Excel Sheet
+      Export To Excel
     </button>
   )
 }
