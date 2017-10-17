@@ -165,7 +165,11 @@ class ApplicationsTable extends Component {
           style={modalStyle}>
           <ApplicationForm onSubmit={this.handleUpdateApplication}/>
           <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>
-          <DeleteApplicationButton onClick={this.handleDelete} />
+          {this.props.currentUser.admin ?
+            <DeleteApplicationButton onClick={this.handleDelete} />
+            :
+            null
+          }
         </Modal>
       </div>
     )
