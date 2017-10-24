@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function ApplicationRow(props){
   const handleClick = () => props.onClick(props.application.id)
@@ -15,7 +16,7 @@ function ApplicationRow(props){
           <td onClick={handleClick}>{props.application.tsys ? <span>&#x2713;</span> : <span> </span>}</td>
           <td onClick={handleClick}>{props.application.other ? <span>&#x2713;</span> : <span> </span>}</td>
           <td onClick={handleClick}>{props.application.notes}</td>
-          <td onClick={handleClick}>{props.application.source}</td>
+          <td onClick={handleClick}><NavLink to="/application">View Details</NavLink></td>
           <td onClick={handleClick}>{new Date(props.application.updated_at).toLocaleDateString()}</td>
         </tr>)
 }

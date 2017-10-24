@@ -72,7 +72,7 @@ class App extends Component {
               )
             )}/>
             <Route exact path="/application" render={() => (
-              this.props.isAuthenticated ? (
+              this.props.currentApplication ? (
                 <ApplicationView />
               ) : (
                   <Redirect to="/" />
@@ -89,7 +89,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
-    currentUser: state.auth.currentUser
+    currentUser: state.auth.currentUser,
+    currentApplication: state.applications.currentApplication
   }
 }
 
