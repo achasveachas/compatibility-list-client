@@ -16,6 +16,7 @@ import Signup from '../views/Signup'
 import Login from '../views/Login'
 import NotFound from '../views/NotFound'
 import Dashboard from '../views/Dashboard'
+import ApplicationView from '../views/ApplicationView'
 import Navbar from '../views/Navbar'
 
 // custom made components
@@ -70,6 +71,13 @@ class App extends Component {
                 <Redirect to="/"/>
               )
             )}/>
+            <Route exact path="/application" render={() => (
+              this.props.isAuthenticated ? (
+                <ApplicationView />
+              ) : (
+                  <Redirect to="/" />
+                )
+            )} />
             <Route component={NotFound} />
           </Switch>
         </div>
