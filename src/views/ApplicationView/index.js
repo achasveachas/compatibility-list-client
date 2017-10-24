@@ -7,7 +7,7 @@ import { editApplication } from '../../redux/modules/Applications/actions'
 import ApiServices from '../../redux/services/Api'
 import ApplicationForm from '../components/Forms/application'
 
-class Dashboard extends Component {
+class ApplicationView extends Component {
 
   constructor(props) {
     super(props)
@@ -65,4 +65,4 @@ const mapStateToProps = (state) => {
     currentApplication: state.applications.currentApplication
   }
 }
-export default connect(mapStateToProps, { editApplication, reset })(Dashboard)
+export default connect(mapStateToProps, { editApplication, reset })(ApplicationView)
