@@ -1,13 +1,13 @@
 import React from 'react'
 
-const NewApplicationButton = (props) => {
+const EditApplicationButton = (props) => {
   return (
     <button
-    className="uk-button uk-button-primary uk-margin-medium uk-margin-left"
-    onClick={props.onClick}>
+      className="uk-button uk-button-primary uk-button-small uk-margin uk-margin-top uk-margin-right"
+      onClick={props.onClick}>
       Edit
     </button>
   )
 }
 
-export default NewApplicationButton
+export default EditApplicationButton
