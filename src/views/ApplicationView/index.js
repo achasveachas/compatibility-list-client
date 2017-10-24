@@ -87,9 +87,11 @@ class ApplicationView extends Component {
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>{ application.software }</span></h1>
         <div className="uk-margin uk-position-center">
           <p className="uk-text-large"><span className="uk-text-bold ">Works with the following gateway(s):</span> {application.gateway ? application.gateway : "N/A"}</p>
-          <p className="uk-text-large"><span className="uk-text-bold ">Through the following frontend(s):</span> {frontEnds.length > 0 ? frontEnds.join(", ") + "." : "N/A"}</p>
+          <p className="uk-text-large"><span className="uk-text-bold ">Through the following front-end(s):</span> {frontEnds.length > 0 ? frontEnds.join(", ") + "." : "N/A"}</p>
           <p className="uk-text"><span className="uk-text-bold ">Ticket Number(s):</span> {application.ticket ? application.ticket : "N/A"}</p>
           <h3 className="uk-heading-line uk-text-center uk-padding"><span>Notes:</span></h3>
+          <span className="uk-text uk-text-small uk-text-bold">Added at: {new Date(application.created_at).toLocaleDateString()}</span>
+          <p className="uk-text">{application.notes}</p>
         </div>
         <div className="uk-position-bottom-center uk-margin-bottom">
           {this.props.currentUser.admin ? <EditApplicationButton onClick={this.openApplicationForm} /> : null}
