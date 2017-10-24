@@ -72,7 +72,7 @@ class App extends Component {
               )
             )}/>
             <Route exact path="/application" render={() => (
-              this.props.currentApplication ? (
+              Object.keys(this.props.currentApplication).length !== 0 ? (
                 <ApplicationView />
               ) : (
                   <Redirect to="/" />
