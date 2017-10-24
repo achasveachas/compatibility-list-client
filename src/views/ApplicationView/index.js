@@ -2,11 +2,13 @@ import React, { Component} from 'react'
 import Modal from 'react-modal'
 import { connect } from 'react-redux';
 import { reset, SubmissionError } from 'redux-form';
+import { withRouter } from 'react-router-dom';
 
-import { editApplication } from '../../redux/modules/Applications/actions'
+import { editApplication, deleteApplication } from '../../redux/modules/Applications/actions'
 import ApiServices from '../../redux/services/Api'
 import ApplicationForm from '../components/Forms/application'
 import EditApplicationButton from '../components/EditApplicationButton'
+import DeleteApplicationButton from '../components/DeleteApplicationButton'
 
 class ApplicationView extends Component {
 
@@ -41,6 +43,20 @@ class ApplicationView extends Component {
 
   }
 
+  handleDelete = () => {
+    const app_id = this.props.currentApplication.id
+    if (confirm("Are you sure you want to delete this application?\nThis action can not be undone.")) {
+      return ApiServices.delete("/applications/" + app_id, this.props.token)
+        .then(() => {
+          this.props.deleteApplication(app_id)
+        })
+        .then(() => this.props.history.push("/dashboard"))
+        .catch((errors) => {
+          console.log(errors);
+        })
+    }
+  }
+
   render() {
     const modalStyle = {
       overlay: {
@@ -73,8 +89,12 @@ class ApplicationView extends Component {
           <p className="uk-text-large"><span className="uk-text-bold ">Works with the following gateway(s):</span> {application.gateway ? application.gateway : "N/A"}</p>
           <p className="uk-text-large"><span className="uk-text-bold ">Through the following frontend(s):</span> {frontEnds.length > 0 ? frontEnds.join(", ") + "." : "N/A"}</p>
           <p className="uk-text"><span className="uk-text-bold ">Ticket Number(s):</span> {application.ticket ? application.ticket : "N/A"}</p>
+          <h3 className="uk-heading-line uk-text-center uk-padding"><span>Notes:</span></h3>
         </div>
-        <EditApplicationButton onClick={this.openApplicationForm} />
+        <div className="uk-position-bottom-center uk-margin-bottom">
+          {this.props.currentUser.admin ? <EditApplicationButton onClick={this.openApplicationForm} /> : null}
+          {this.props.currentUser.admin ? <DeleteApplicationButton onClick={this.handleDelete} /> : null}
+        </div>
 
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -96,4 +116,4 @@ const mapStateToProps = (state) => {
     currentApplication: state.applications.currentApplication
   }
 }
-export default connect(mapStateToProps, { editApplication, reset })(ApplicationView)
+export default withRouter(connect(mapStateToProps, { editApplication, deleteApplication, reset })(ApplicationView))
