@@ -50,13 +50,33 @@ class ApplicationView extends Component {
     }
 
     const application = this.props.currentApplication
+    let frontEnds = []
+
+    if (application.omaha)
+      frontEnds.push("Omaha")
+    if (application.nashville)
+      frontEnds.push("Nashville")
+    if (application.north)
+      frontEnds.push("North")
+    if (application.buypass)
+      frontEnds.push("BuyPass")
+    if (application.elavon)
+      frontEnds.push("Elavon")
+    if (application.tsys)
+      frontEnds.push("TSYS")
+
     return (
       <div>
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>{ application.software }</span></h1>
-
+        <div className="uk-margin uk-position-center">
+          <p className="uk-text-large"><span className="uk-text-bold ">Works with the following gateway(s):</span> {application.gateway ? application.gateway : "N/A"}</p>
+          <p className="uk-text-large"><span className="uk-text-bold ">Through the following frontend(s):</span> {frontEnds.length > 0 ? frontEnds.join(", ") + "." : "N/A"}</p>
+          <p className="uk-text"><span className="uk-text-bold ">Ticket Number(s):</span> {application.ticket ? application.ticket : "N/A"}</p>
+        </div>
       </div>
-    )}
+    )
   }
+}
 
 const mapStateToProps = (state) => {
   return {
