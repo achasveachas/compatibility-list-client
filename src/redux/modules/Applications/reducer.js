@@ -40,7 +40,7 @@ export default (state = initialState, action) => {
               editedApplication,
               ...state.applications.slice(index + 1)
             ],
-            currentApplication: {}
+            currentApplication: editedApplication
         }
 
     case 'DELETE_APPLICATION':
