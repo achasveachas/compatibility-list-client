@@ -6,6 +6,7 @@ import { reset, SubmissionError } from 'redux-form';
 import { editApplication } from '../../redux/modules/Applications/actions'
 import ApiServices from '../../redux/services/Api'
 import ApplicationForm from '../components/Forms/application'
+import EditApplicationButton from '../components/EditApplicationButton'
 
 class ApplicationView extends Component {
 
@@ -26,7 +27,7 @@ class ApplicationView extends Component {
   }
 
   handleEditApplication = (data) => {
-    return ApiServices.patch("/applications", data, this.props.token)
+    return ApiServices.patch("/applications/" + this.props.currentApplication.id, data, this.props.token)
       .then(response => {
         const { application } = response
         this.props.editApplication(application)
@@ -73,6 +74,16 @@ class ApplicationView extends Component {
           <p className="uk-text-large"><span className="uk-text-bold ">Through the following frontend(s):</span> {frontEnds.length > 0 ? frontEnds.join(", ") + "." : "N/A"}</p>
           <p className="uk-text"><span className="uk-text-bold ">Ticket Number(s):</span> {application.ticket ? application.ticket : "N/A"}</p>
         </div>
+        <EditApplicationButton onClick={this.openApplicationForm} />
+
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          contentLabel="Modal"
+          onRequestClose={this.closeModal}
+          style={modalStyle}>
+          <ApplicationForm onSubmit={this.handleEditApplication} />
+          <button type="button" className="uk-button uk-margin-top uk-margin-right uk-button-secondary uk-position-top-right" onClick={this.closeModal}>X</button>
+        </Modal>
       </div>
     )
   }
