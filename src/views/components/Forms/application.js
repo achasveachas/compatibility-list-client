@@ -37,7 +37,6 @@ class ApplicationForm extends Component {
       "buypass": currentApplication.buypass,
       "elavon": currentApplication.elavon,
       "tsys": currentApplication.tsys,
-      "notes": currentApplication.notes,
       "source": currentApplication.source,
       "agent": currentApplication.agent,
       "ticket": currentApplication.ticket
@@ -97,7 +96,7 @@ class ApplicationForm extends Component {
                 component={renderCheckbox}
               />
               <h3 className="uk-heading-line uk-text-center uk-padding"><span>Additional Info</span></h3>
-              <label className="uk-form-label">Notes:</label>
+              <label className="uk-form-label">Add A Note:</label>
               <Field
                 name="notes"
                 component={renderTextBox}
