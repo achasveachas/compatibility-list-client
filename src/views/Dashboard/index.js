@@ -7,7 +7,6 @@ import { addApplication, clearCurrentApplication } from '../../redux/modules/App
 import ApiServices from '../../redux/services/Api'
 import ApplicationsTable from '../components/ApplicationsTable'
 import NewApplicationButton from '../components/NewApplicationButton'
-import ExportToExcelButton from '../components/ExportToExcelButton'
 import ApplicationForm from '../components/Forms/application'
 
 class Dashboard extends Component {
@@ -67,10 +66,8 @@ class Dashboard extends Component {
       <div>
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>Software Compatibility Requests</span></h1>
         <NewApplicationButton onClick={this.openApplicationForm} />
-        <ExportToExcelButton onClick={this.getExcel} />
         <ApplicationsTable />
         <NewApplicationButton onClick={this.openApplicationForm} />
-        <ExportToExcelButton onClick={this.getExcel} />
         <Modal
           isOpen={this.state.modalIsOpen}
           contentLabel="Modal"
