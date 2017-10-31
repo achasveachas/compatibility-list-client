@@ -8,6 +8,7 @@ import { editApplication, deleteApplication } from '../../redux/modules/Applicat
 import ApiServices from '../../redux/services/Api'
 import ApplicationForm from '../components/Forms/application'
 import EditApplicationButton from '../components/EditApplicationButton'
+import CommentView from '../components/CommentView'
 import DeleteApplicationButton from '../components/DeleteApplicationButton'
 
 class ApplicationView extends Component {
@@ -82,6 +83,9 @@ class ApplicationView extends Component {
     if (application.tsys)
       frontEnds.push("TSYS")
 
+    const RenderedComments = application.comments.sort((a, b) => b.id - a.id)
+      .map((comment, index) => <CommentView key={index} comment={comment} />)
+
     return (
       <div>
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>{ application.software }</span></h1>
@@ -90,8 +94,8 @@ class ApplicationView extends Component {
           <p className="uk-text-large"><span className="uk-text-bold ">Through the following front-end(s):</span> {frontEnds.length > 0 ? frontEnds.join(", ") + "." : "N/A"}</p>
           <p className="uk-text"><span className="uk-text-bold ">Ticket Number(s):</span> {application.ticket ? application.ticket : "N/A"}</p>
           <h3 className="uk-heading-line uk-text-center uk-padding"><span>Notes:</span></h3>
-          <span className="uk-text uk-text-small uk-text-bold">Added at: {new Date(application.created_at).toLocaleDateString()}</span>
-          <p className="uk-text">{application.notes}</p>
+          
+          <div className="uk-text">{RenderedComments}</div>
         </div>
         <div className="uk-position-bottom-center uk-margin-bottom">
           {this.props.currentUser.admin ? <EditApplicationButton onClick={this.openApplicationForm} /> : null}
