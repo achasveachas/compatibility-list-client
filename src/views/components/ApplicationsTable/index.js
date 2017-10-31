@@ -38,7 +38,6 @@ class ApplicationsTable extends Component {
 
   handleRowClick = (id) => {
     this.setApplication(id)
-    this.openModal()
   }
 
 
