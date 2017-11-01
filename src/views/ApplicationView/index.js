@@ -71,7 +71,7 @@ class ApplicationView extends Component {
     let frontEnds = []
 
     const validURL = (str) => {
-      var pattern = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+      const pattern = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
 
       return pattern.test(str);
     }
