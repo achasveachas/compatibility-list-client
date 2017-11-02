@@ -78,7 +78,7 @@ class ApplicationView extends Component {
 
     const displaySource = (string) => {
       if(validURL(string)) {
-        return <a href={string}>{string}</a>
+        return <a href={string} target="_blank">{string}</a>
       } else{
         return string
       } 
