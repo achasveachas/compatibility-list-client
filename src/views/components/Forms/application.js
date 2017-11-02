@@ -54,6 +54,7 @@ class ApplicationForm extends Component {
     const initData = {
       "software": currentApplication.software,
       "gateway": currentApplication.gateway,
+      "compatible": currentApplication.compatible,
       "omaha": currentApplication.omaha,
       "nashville": currentApplication.nashville,
       "north": currentApplication.north,
@@ -62,6 +63,7 @@ class ApplicationForm extends Component {
       "tsys": currentApplication.tsys,
       "source": currentApplication.source,
       "agent": currentApplication.agent,
+      "merchants_using": currentApplication.merchants_using,
       "ticket": currentApplication.ticket
     }
     this.props.initialize(initData)
@@ -104,6 +106,11 @@ class ApplicationForm extends Component {
                 component={renderField}
               />
               <h3 className="uk-heading-line uk-text-center uk-padding"><span>Compatible With The Following Processors:</span></h3>
+              <label className="uk-form-label">Can we Integrate? </label>
+              <Field
+                name="compatible"
+                component={renderCheckbox}
+              /><br/><br/>
               <label className="uk-form-label">Omaha: </label>
               <Field
                 name="omaha"
