@@ -5,7 +5,7 @@ function ApplicationRow(props){
   const handleClick = () => props.onClick(props.application.id)
 
   return (
-        <tr>
+    <tr className={props.application.compatible ? "uk-text" : "uk-text-danger"} >
           <td>{props.application.software}</td>
           <td>{props.application.gateway}</td>
           <td>{props.application.omaha ? <span>&#x2713;</span> : <span> </span>}</td>
