@@ -165,7 +165,7 @@ class ApplicationForm extends Component {
                 component={renderField}
               />
             </div>
-            <button action="submit" className="uk-button uk-position-bottom-right uk-margin-bottom uk-margin-right uk-button-primary">Save</button>
+            <button action="submit" className="uk-button uk-position-bottom-right uk-margin-bottom uk-margin-right uk-button-primary" disabled={Object.keys(this.props.formValues).length > 0 && (!this.props.formValues.application.values.software || !this.props.formValues.application.values.notes)}>Save</button>
           </fieldset>
         </form>
       </div>
@@ -176,7 +176,8 @@ class ApplicationForm extends Component {
 const mapStateToProps = (state) => {
   return { 
     currentApplication: state.applications.currentApplication,
-    admin: state.auth.currentUser.admin 
+    admin: state.auth.currentUser.admin,
+    formValues: state.form
   }
 }
 
