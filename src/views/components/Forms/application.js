@@ -142,13 +142,7 @@ class ApplicationForm extends Component {
                 component={renderCheckbox}
               />
               <h3 className="uk-heading-line uk-text-center uk-padding"><span>Additional Info</span></h3>
-              {!!this.state.notesErrors.notes ? <small className="uk-alert-danger">{this.state.notesErrors.notes}</small> : <small><font color="white">.</font></small>}<br />
-              <label className="uk-form-label">Add A Note:</label>
-              <Field
-                name="notes"
-                onChange={this.handleChange.bind(this)}
-                component={renderTextBox}
-              />
+
               <label className="uk-form-label">Source:</label>
               <Field
                 name="source"
@@ -163,9 +157,22 @@ class ApplicationForm extends Component {
               <Field
                 name="ticket"
                 component={renderField}
+              /><br/>
+              {!!this.state.notesErrors.notes ? <small className="uk-alert-danger"> {this.state.notesErrors.notes} </small> : <small><font color="white">.</font > < /small>}<br/>
+              <label className="uk-form-label" >Add A Note:< /label> 
+              <Field
+                name="notes"
+                onChange={this.handleChange.bind(this)}
+                component={renderTextBox}
+              />
+              <label className="uk-form-label">Merchant(s) Currently Using:</label> 
+              <Field
+                name="merchants_using"
+                onChange={this.handleChange.bind(this)}
+                component={renderTextBox}
               />
             </div>
-            <button action="submit" className="uk-button uk-position-bottom-right uk-margin-bottom uk-margin-right uk-button-primary" disabled={Object.keys(this.props.formValues).length > 0 && (!this.props.formValues.application.values.software || !this.props.formValues.application.values.notes)}>Save</button>
+            <button action="submit" className="uk-button uk-position-bottom-right uk-margin-small-bottom uk-margin-right uk-button-primary" disabled={Object.keys(this.props.formValues).length > 0 && (!this.props.formValues.application.values.software || !this.props.formValues.application.values.notes)}>Save</button>
           </fieldset>
         </form>
       </div>
