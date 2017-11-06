@@ -83,28 +83,28 @@ class ApplicationView extends Component {
       } 
     }
 
-     const displayFrontends = () => {
-       let frontEnds = []
+    const displayFrontends = () => {
+      let frontEnds = []
 
-       if (application.omaha)
-         frontEnds.push("Omaha")
-       if (application.nashville)
-         frontEnds.push("Nashville")
-       if (application.north)
-         frontEnds.push("North")
-       if (application.buypass)
-         frontEnds.push("BuyPass")
-       if (application.elavon)
-         frontEnds.push("Elavon")
-       if (application.tsys)
-         frontEnds.push("TSYS")
+      if (application.omaha)
+        frontEnds.push("Omaha")
+      if (application.nashville)
+        frontEnds.push("Nashville")
+      if (application.north)
+        frontEnds.push("North")
+      if (application.buypass)
+        frontEnds.push("BuyPass")
+      if (application.elavon)
+        frontEnds.push("Elavon")
+      if (application.tsys)
+        frontEnds.push("TSYS")
 
-       if(frontEnds.length > 0){
-        return frontEnds.join(", ") + "."
-       } else {
-         return "N/A"
-       }
-     }
+      if(frontEnds.length > 0){
+      return frontEnds.join(", ") + "."
+      } else {
+        return "N/A"
+      }
+    }
 
     const renderTickets = application.ticket.split(", ")
       .map(ticket => <a href={"qa:type=ticket&id=" + ticket}>{ticket}</a>)
@@ -117,12 +117,13 @@ class ApplicationView extends Component {
     return (
       <div>
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>{ application.software }</span></h1>
-        <p className="uk-text-large uk-text-center"><span className="uk-text-bold ">Works with the following gateway(s):</span> {application.gateway ? application.gateway : "N/A"}</p>
+        <p className="uk-text-large uk-text-center"><span className="uk-text-bold ">Works with the following gateway(s):</span> {application.gateway || "N/A"}</p>
         <p className="uk-text-large uk-text-center"><span className="uk-text-bold ">Through the following front-end(s):</span> {displayFrontends()}</p>
         <p className="uk-text uk-text-center">
           <span className="uk-text-bold ">Source:</span> {application.source ? displaySource(application.source) : "N/A"}
         </p>
-        <p className="uk-text uk-text-center"><span className="uk-text-bold ">Ticket Number(s):</span> {application.ticket ? renderTickets : "N/A"}</p>
+        <p className="uk-text uk-text-center"><span className="uk-text-bold ">Ticket Number(s):</span> { application.ticket ? renderTickets : "N/A"}</p>
+        <p className="uk-text uk-text-center"><span className="uk-text-bold ">Merchant(s) Currently Using:</span> {application.merchants_using || "N/A"}</p>
         <h3 className="uk-heading-line uk-text-center uk-padding uk-text-center"><span>Notes:</span></h3>
         
         <div className="uk-text uk-text-center">{RenderedComments}</div>
