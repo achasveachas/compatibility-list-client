@@ -106,9 +106,9 @@ class ApplicationView extends Component {
       }
     }
 
-    const renderTickets = application.ticket.split(", ")
+    const renderTickets = () => {application.ticket.split(", ")
       .map(ticket => <a href={"qa:type=ticket&id=" + ticket}>{ticket}</a>)
-      .reduce((prev, curr) => [prev, ', ', curr])
+      .reduce((prev, curr) => [prev, ', ', curr])}
 
 
     const RenderedComments = application.comments.sort((a, b) => b.id - a.id)
@@ -122,7 +122,7 @@ class ApplicationView extends Component {
         <p className="uk-text uk-text-center">
           <span className="uk-text-bold ">Source:</span> {application.source ? displaySource(application.source) : "N/A"}
         </p>
-        <p className="uk-text uk-text-center"><span className="uk-text-bold ">Ticket Number(s):</span> { application.ticket ? renderTickets : "N/A"}</p>
+        <p className="uk-text uk-text-center"><span className="uk-text-bold ">Ticket Number(s):</span> {application.ticket ? renderTickets() : "N/A"}</p>
         <p className="uk-text uk-text-center"><span className="uk-text-bold ">Merchant(s) Currently Using:</span> {application.merchants_using || "N/A"}</p>
         <h3 className="uk-heading-line uk-text-center uk-padding uk-text-center"><span>Notes:</span></h3>
         
