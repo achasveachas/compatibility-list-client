@@ -68,7 +68,6 @@ class ApplicationView extends Component {
     }
 
     const application = this.props.currentApplication
-    let frontEnds = []
 
     const validURL = (str) => {
       const pattern = /(http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/
@@ -84,22 +83,33 @@ class ApplicationView extends Component {
       } 
     }
 
+     const displayFrontends = () => {
+       let frontEnds = []
+
+       if (application.omaha)
+         frontEnds.push("Omaha")
+       if (application.nashville)
+         frontEnds.push("Nashville")
+       if (application.north)
+         frontEnds.push("North")
+       if (application.buypass)
+         frontEnds.push("BuyPass")
+       if (application.elavon)
+         frontEnds.push("Elavon")
+       if (application.tsys)
+         frontEnds.push("TSYS")
+
+       if(frontEnds.length > 0){
+        return frontEnds.join(", ") + "."
+       } else {
+         return "N/A"
+       }
+     }
+
     const renderTickets = application.ticket.split(", ")
       .map(ticket => <a href={"qa:type=ticket&id=" + ticket}>{ticket}</a>)
       .reduce((prev, curr) => [prev, ', ', curr])
 
-    if (application.omaha)
-      frontEnds.push("Omaha")
-    if (application.nashville)
-      frontEnds.push("Nashville")
-    if (application.north)
-      frontEnds.push("North")
-    if (application.buypass)
-      frontEnds.push("BuyPass")
-    if (application.elavon)
-      frontEnds.push("Elavon")
-    if (application.tsys)
-      frontEnds.push("TSYS")
 
     const RenderedComments = application.comments.sort((a, b) => b.id - a.id)
       .map((comment, index) => <CommentView key={index} comment={comment} />)
@@ -108,7 +118,7 @@ class ApplicationView extends Component {
       <div>
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>{ application.software }</span></h1>
         <p className="uk-text-large uk-text-center"><span className="uk-text-bold ">Works with the following gateway(s):</span> {application.gateway ? application.gateway : "N/A"}</p>
-        <p className="uk-text-large uk-text-center"><span className="uk-text-bold ">Through the following front-end(s):</span> {frontEnds.length > 0 ? frontEnds.join(", ") + "." : "N/A"}</p>
+        <p className="uk-text-large uk-text-center"><span className="uk-text-bold ">Through the following front-end(s):</span> {displayFrontends()}</p>
         <p className="uk-text uk-text-center">
           <span className="uk-text-bold ">Source:</span> {application.source ? displaySource(application.source) : "N/A"}
         </p>
