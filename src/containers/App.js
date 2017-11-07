@@ -35,6 +35,7 @@ class App extends Component {
 
   componentDidMount() {
     const token = localStorage.getItem('token')
+    console.log("Created for Fidelity Payment Services\nBy Yechiel Kalmenson")
     if (token) {
       this.props.authenticate(token)
     } else {
