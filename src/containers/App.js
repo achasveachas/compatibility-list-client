@@ -16,6 +16,7 @@ import Signup from '../views/Signup'
 import Login from '../views/Login'
 import NotFound from '../views/NotFound'
 import Dashboard from '../views/Dashboard'
+import Loading from '../views/Loading'
 import ApplicationView from '../views/ApplicationView'
 import Navbar from '../views/Navbar'
 
@@ -24,6 +25,7 @@ import { authenticate, authFailure } from '../redux/modules/Auth/actions'
 
 type Props = {
   isAuthenticated: boolean,
+  isAuthenticating: boolean,
   logout: () => void,
   authenticate: () => void,
   authFailure: () => void
@@ -45,6 +47,10 @@ class App extends Component {
   }
 
   render() {
+
+    if (this.props.isAuthenticating) {
+      return <Loading/>
+    }
     return (
       <Router>
         <div className="App">
@@ -90,6 +96,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     isAuthenticated: state.auth.isAuthenticated,
+    isAuthenticating: state.auth.isAuthenticating,
     currentUser: state.auth.currentUser,
     currentApplication: state.applications.currentApplication
   }
