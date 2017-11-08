@@ -3,11 +3,12 @@ import Modal from 'react-modal'
 import { connect } from 'react-redux';
 import { reset, SubmissionError } from 'redux-form';
 
-import { addApplication, clearCurrentApplication } from '../../redux/modules/Applications/actions'
+import { addApplication, clearCurrentApplication, gotApplications } from '../../redux/modules/Applications/actions'
 import ApiServices from '../../redux/services/Api'
 import ApplicationsTable from '../components/ApplicationsTable'
 import NewApplicationButton from '../components/NewApplicationButton'
 import ApplicationForm from '../components/Forms/application'
+import Loading from '../Loading'
 
 class Dashboard extends Component {
 
@@ -19,6 +20,17 @@ class Dashboard extends Component {
       modalIsOpen: false
     }
 
+  }
+
+  componentDidMount() {
+
+    return ApiServices.get("/applications", this.props.token)
+      .then(response => {
+        this.props.gotApplications(response.applications)
+      })
+      .catch((errors) => {
+        console.log(errors);
+      })
   }
 
   openModal = () => this.setState({modalIsOpen: true})
@@ -65,8 +77,8 @@ class Dashboard extends Component {
     return (
       <div>
         <h1 className="uk-heading-line uk-text-center uk-padding"><span>Software Compatibility Requests</span></h1>
-        <NewApplicationButton onClick={this.openApplicationForm} />
-        <ApplicationsTable />
+        <NewApplicationButton onClick={this.openApplicationForm} /><br/>
+        {this.props.gettingApplications ? <Loading /> : <ApplicationsTable />}
         <NewApplicationButton onClick={this.openApplicationForm} />
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -85,7 +97,8 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.auth.currentUser,
     token: state.auth.token,
-    currentApplication: state.applications.currentApplication
+    currentApplication: state.applications.currentApplication,
+    gettingApplications: state.applications.gettingApplications
   }
 }
-export default connect(mapStateToProps, { addApplication, clearCurrentApplication, reset })(Dashboard)
+export default connect(mapStateToProps, { addApplication, gotApplications, clearCurrentApplication, reset })(Dashboard)

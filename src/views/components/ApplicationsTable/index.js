@@ -3,12 +3,11 @@ import { connect } from 'react-redux'
 import Modal from 'react-modal'
 import { reset, SubmissionError } from 'redux-form';
 
-import { gotApplications, setCurrentApplication, deleteApplication, editApplication } from '../../../redux/modules/Applications/actions'
+import { setCurrentApplication, deleteApplication, editApplication } from '../../../redux/modules/Applications/actions'
 import ApiServices from '../../../redux/services/Api'
 import ApplicationRow from '../ApplicationRow'
 import DeleteApplicationButton from '../DeleteApplicationButton'
 import ApplicationForm from '../Forms/application'
-import Loading from '../../Loading'
 
 
 class ApplicationsTable extends Component {
@@ -20,17 +19,6 @@ class ApplicationsTable extends Component {
       modalIsOpen: false,
       filter: ""
     }
-  }
-
-  componentDidMount() {
-
-    return ApiServices.get("/applications", this.props.token)
-     .then(response => {
-       this.props.gotApplications(response.applications)
-     })
-     .catch((errors) => {
-       console.log(errors);
-     })
   }
 
   setApplication = (id) => this.props.setCurrentApplication(id)
@@ -114,10 +102,6 @@ class ApplicationsTable extends Component {
       }
     }
 
-    if (this.props.gettingApplications) {
-      return <Loading />
-    }
-
     return (
       <div className="uk-overflow-auto">
         {this.props.applications.length > 0 ?
@@ -184,9 +168,8 @@ const mapStateToProps = (state) => {
     currentApplication: state.applications.currentApplication,
     currentUser: state.auth.currentUser,
     token: state.auth.token,
-    gettingApplications: state.applications.gettingApplications
   }
 }
 
 
-export default connect(mapStateToProps, { gotApplications, setCurrentApplication, deleteApplication, editApplication, reset })(ApplicationsTable)
+export default connect(mapStateToProps, { setCurrentApplication, deleteApplication, editApplication, reset })(ApplicationsTable)
