@@ -7,7 +7,8 @@ import { gotApplications, setCurrentApplication, deleteApplication, editApplicat
 import ApiServices from '../../../redux/services/Api'
 import ApplicationRow from '../ApplicationRow'
 import DeleteApplicationButton from '../DeleteApplicationButton'
-import ApplicationForm from '../../components/Forms/application'
+import ApplicationForm from '../Forms/application'
+import Loading from '../../Loading'
 
 
 class ApplicationsTable extends Component {
@@ -113,6 +114,10 @@ class ApplicationsTable extends Component {
       }
     }
 
+    if (this.props.gettingApplications) {
+      return <Loading />
+    }
+
     return (
       <div className="uk-overflow-auto">
         {this.props.applications.length > 0 ?
@@ -178,7 +183,8 @@ const mapStateToProps = (state) => {
     applications: state.applications.applications,
     currentApplication: state.applications.currentApplication,
     currentUser: state.auth.currentUser,
-    token: state.auth.token
+    token: state.auth.token,
+    gettingApplications: state.applications.gettingApplications
   }
 }
 
