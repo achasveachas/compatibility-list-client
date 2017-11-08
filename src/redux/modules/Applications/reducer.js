@@ -1,6 +1,7 @@
 const initialState = {
   applications: [],
-  currentApplication: {}
+  currentApplication: {},
+  gettingApplications: true
 }
 
 export default (state = initialState, action) => {
@@ -21,7 +22,8 @@ export default (state = initialState, action) => {
     case 'GOT_APPLICATIONS':
       return {
         ...state,
-        applications: action.applications
+        applications: action.applications,
+        gettingApplications: false
       }
 
     case 'ADD_APPLICATION':
