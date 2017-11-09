@@ -54,7 +54,7 @@ class ApplicationForm extends Component {
     const initData = {
       "software": currentApplication.software,
       "gateway": currentApplication.gateway,
-      "compatible": currentApplication.compatible,
+      "compatible": currentApplication.compatible  || false,
       "omaha": currentApplication.omaha,
       "nashville": currentApplication.nashville,
       "north": currentApplication.north,
