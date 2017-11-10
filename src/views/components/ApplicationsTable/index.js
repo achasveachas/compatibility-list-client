@@ -128,6 +128,7 @@ class ApplicationsTable extends Component {
                   <th className="uk-table-shrink uk-table-middle">Buypass</th>
                   <th className="uk-table-shrink uk-table-middle">Elavon</th>
                   <th className="uk-table-shrink uk-table-middle">TSYS</th>
+                  <th className="uk-table-shrink uk-table-middle">Other</th>
                   <th className="uk-table-expand uk-table-middle">Notes</th>
                   <th className="uk-table-shrink uk-table-middle"></th>
                 </tr>

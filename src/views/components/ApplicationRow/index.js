@@ -14,6 +14,7 @@ function ApplicationRow(props){
           <td>{props.application.buypass ? <span>&#x2713;</span> : <span> </span>}</td>
           <td>{props.application.elavon ? <span>&#x2713;</span> : <span> </span>}</td>
           <td>{props.application.tsys ? <span>&#x2713;</span> : <span> </span>}</td>
+          <td>{props.application.other ? <span>&#x2713;</span> : <span> </span>}</td>
           <td>{props.application.comments[props.application.comments.length - 1].body}</td>
           <td onClick={handleClick}><NavLink to="/application" className="uk-button uk-button-primary">View</NavLink></td>
         </tr>)
