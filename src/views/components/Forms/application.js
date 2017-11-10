@@ -60,6 +60,7 @@ class ApplicationForm extends Component {
       "buypass": currentApplication.buypass,
       "elavon": currentApplication.elavon,
       "tsys": currentApplication.tsys,
+      "other": currentApplication.other,
       "source": currentApplication.source,
       "agent": currentApplication.agent,
       "merchants_using": currentApplication.merchants_using,
@@ -133,6 +134,11 @@ class ApplicationForm extends Component {
               <label className="uk-form-label">TSYS: </label>
               <Field
                 name="tsys"
+                component={renderCheckbox}
+              />
+              <label className="uk-form-label">Other: </label>
+              <Field
+                name="other"
                 component={renderCheckbox}
               />
               <h3 className="uk-heading-line uk-text-center uk-padding"><span>Additional Info</span></h3>
