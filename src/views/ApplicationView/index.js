@@ -98,6 +98,8 @@ class ApplicationView extends Component {
         frontEnds.push("Elavon")
       if (application.tsys)
         frontEnds.push("TSYS")
+      if (application.other)
+        frontEnds.push("Other")
 
       if(frontEnds.length > 0){
       return frontEnds.join(", ") + "."
