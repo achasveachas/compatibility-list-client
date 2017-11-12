@@ -14,14 +14,14 @@ This project was bootstrapped using [Create React App](https://github.com/facebo
 
 The styling for this app was bootstrapped using [UIkit](https://getuikit.com/)
 
-### Contributing
+## Contributing
 
 Bug reports and pull requests are welcome on [GitHub](https://github.com/achasveachas/compatibility-list-client) or by email to [ykalmenson@fidelitypayment.com](mailto:ykalmenson@fidelitypayment.com). Please adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-### License
+## License
 
 The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-### Contact
+## Contact
 
 Yechiel Kalmenson can be contacted by email at [ykalmenson@fidelitypayment.com](mailto:ykalmenson@fidelitypayment.com).
