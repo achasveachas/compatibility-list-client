@@ -16,7 +16,7 @@ The styling for this app was bootstrapped using [UIkit](https://getuikit.com/)
 
 ### Contributing
 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/achasveachas/compatibility-list-client) or by email to [ykalmenson@fidelitypayment.com](mailto:ykalmenson@fidelitypayment.com). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on [GitHub](https://github.com/achasveachas/compatibility-list-client) or by email to [ykalmenson@fidelitypayment.com](mailto:ykalmenson@fidelitypayment.com). Please adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ### License
 
@@ -24,4 +24,4 @@ The app is available as open source under the terms of the [MIT License](http://
 
 ### Contact
 
-Yechiel Kalmenson can be contacted by email at [contact@yechiel.me](mailto:contact@yechiel.me), or through his website [Yechiel.me](http://yechiel.me). Links to his social media can be found on the site as well.
+Yechiel Kalmenson can be contacted by email at [ykalmenson@fidelitypayment.com](mailto:ykalmenson@fidelitypayment.com).
