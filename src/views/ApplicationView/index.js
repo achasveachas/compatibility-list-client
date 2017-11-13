@@ -129,7 +129,7 @@ class ApplicationView extends Component {
         <h3 className="uk-heading-line uk-text-center uk-padding uk-text-center"><span>Notes:</span></h3>
         
         <div className="uk-text uk-text-center">{RenderedComments}</div>
-        <div className="uk-margin-auto">
+        <div className="uk-margin-left">
           {this.props.currentUser.admin ? <EditApplicationButton onClick={this.openApplicationForm} /> : null}
           {this.props.currentUser.admin ? <DeleteApplicationButton onClick={this.handleDelete} /> : null}
         </div>
