@@ -102,7 +102,7 @@ class ApplicationView extends Component {
         frontEnds.push("Other")
 
       if(frontEnds.length > 0){
-      return frontEnds.join(", ") + "."
+        return frontEnds.join(", ") + "."
       } else {
         return "N/A"
       }
