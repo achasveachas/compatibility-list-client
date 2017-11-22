@@ -158,8 +158,8 @@ class ApplicationForm extends Component {
                 name="ticket"
                 component={renderField}
               /><br/>
-              {!!this.state.notesErrors.notes ? <small className="uk-alert-danger"> {this.state.notesErrors.notes} </small> : <small><font color="white">.</font > < /small>}<br/>
-              <label className="uk-form-label" >Add A Note:< /label> 
+              {!!this.state.notesErrors.notes ? <small className="uk-alert-danger"> {this.state.notesErrors.notes} </small> : <small><font color="white">.</font></small>}<br/>
+              <label className="uk-form-label">Add A Note:</label> 
               <Field
                 name="notes"
                 onChange={this.handleChange.bind(this)}
