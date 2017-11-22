@@ -108,9 +108,15 @@ class ApplicationView extends Component {
       }
     }
 
-    const renderTickets = () => {application.ticket.split(", ")
-      .map(ticket => <a href={"qa:type=ticket&id=" + ticket}>{ticket}</a>)
-      .reduce((prev, curr) => [prev, ', ', curr])}
+    const renderTickets = () => {
+      const tickets = application.ticket.split(",")
+      if(tickets.length > 1) {
+        return tickets.map(ticket => <a href={"qa:type=ticket&id=" + ticket.trim()}>{ticket.trim()}</a>)
+                      .reduce((prev, curr) => [prev, ', ', curr])
+      } else {
+        return <a href={"qa:type=ticket&id=" + tickets}>{tickets}</a>
+      }
+    }
 
 
     const RenderedComments = application.comments.sort((a, b) => b.id - a.id)
