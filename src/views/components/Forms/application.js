@@ -153,7 +153,7 @@ class ApplicationForm extends Component {
                 name="agent"
                 component={renderField}
               />
-              <label className="uk-form-label">Ticket Number:</label>
+              <label className="uk-form-label">Ticket Number (seperate multiple tickets with a comma):</label>
               <Field
                 name="ticket"
                 component={renderField}
