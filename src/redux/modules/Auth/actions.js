@@ -9,6 +9,12 @@ const authRequest = () => {
   }
 }
 
+export const cancelAuthRequest = () => {
+  return {
+    type: 'CANCEL_AUTHENTICATION_REQUEST',
+  }
+}
+
 const authSuccess = (user, token) => {
   return {
     type: 'AUTHENTICATION_SUCCESS',

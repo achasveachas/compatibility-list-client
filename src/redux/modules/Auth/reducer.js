@@ -15,6 +15,12 @@ export default (state = initialState, action) => {
         isAuthenticating: true
       }
 
+    case 'CANCEL_AUTHENTICATION_REQUEST':
+      return {
+        ...state,
+        isAuthenticating: false
+      }
+
     case 'AUTHENTICATION_SUCCESS':
       return {
         ...state,
