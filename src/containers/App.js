@@ -18,16 +18,17 @@ import NotFound from '../views/NotFound'
 import Dashboard from '../views/Dashboard'
 import ApplicationView from '../views/ApplicationView'
 import Navbar from '../views/Navbar'
+import Loading from '../views/Loading'
 
 // custom made components
-import { authenticate, authFailure } from '../redux/modules/Auth/actions'
+import { authenticate, cancelAuthRequest } from '../redux/modules/Auth/actions'
 
 type Props = {
   isAuthenticated: boolean,
   isAuthenticating: boolean,
   logout: () => void,
   authenticate: () => void,
-  authFailure: () => void
+  cancelAuthRequest: () => void
 }
 
 class App extends Component {
@@ -40,12 +41,17 @@ class App extends Component {
     if (token) {
       this.props.authenticate(token)
     } else {
+      this.props.cancelAuthRequest()
       // Ping the API server in case it hasn't been used in 30 minutes and Heroku put it to sleep
       fetch('http://fps-compatibility-api.herokuapp.com/api/v1')
     }
   }
 
   render() {
+
+    if (this.props.isAuthenticating) {
+      return <Loading />
+    }
 
     return (
       <Router>
@@ -81,7 +87,7 @@ const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
     logout,
     authenticate,
-    authFailure
+    cancelAuthRequest
   }, dispatch)
 }
 
