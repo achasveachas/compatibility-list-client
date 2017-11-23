@@ -16,7 +16,6 @@ import Signup from '../views/Signup'
 import Login from '../views/Login'
 import NotFound from '../views/NotFound'
 import Dashboard from '../views/Dashboard'
-import Loading from '../views/Loading'
 import ApplicationView from '../views/ApplicationView'
 import Navbar from '../views/Navbar'
 
