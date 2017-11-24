@@ -50,7 +50,7 @@ class App extends Component {
   render() {
 
     if (this.props.isAuthenticating) {
-      return <Loading />
+      return <Loading/>
     }
 
     return (
@@ -59,14 +59,13 @@ class App extends Component {
           <Navbar isAuthenticated={this.props.isAuthenticated} logout={this.props.logout} currentUser={this.props.currentUser.name || this.props.currentUser.username} admin={this.props.currentUser.admin}/>
           <Switch>
             <Route exact path="/" render={() => this.props.isAuthenticated ? <Redirect to="/dashboard"/> : <Welcome/>}/>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/admin/new_user" render={() => this.props.currentUser && this.props.currentUser.admin ? <Signup /> : <Redirect to="/dashboard"/>} />
+            <Route exact path="/login" component={Login}/>
+            <Route exact path="/admin/new_user" render={() => this.props.currentUser && this.props.currentUser.admin ? <Signup/> : <Redirect to="/dashboard"/>}/>
             <Route exact path="/dashboard" render={() => this.props.isAuthenticated ? <Dashboard /> : <Redirect to="/"/>}/>
             <Route exact path="/application" render={() => (
-              Object.keys(this.props.currentApplication).length !== 0 ? <ApplicationView /> : <Redirect to="/" />
-              
-            )} />
-            <Route component={NotFound} />
+              Object.keys(this.props.currentApplication).length !== 0 ? <ApplicationView/> : <Redirect to="/dashboard"/>  
+            )}/>
+            <Route component={NotFound}/>
           </Switch>
         </div>
       </Router>
