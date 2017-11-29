@@ -62,9 +62,7 @@ class App extends Component {
             <Route exact path="/login" component={Login}/>
             <Route exact path="/admin/new_user" render={() => this.props.currentUser && this.props.currentUser.admin ? <Signup/> : <Redirect to="/dashboard"/>}/>
             <Route exact path="/dashboard" render={() => this.props.isAuthenticated ? <Dashboard /> : <Redirect to="/"/>}/>
-            <Route exact path="/application" render={() => (
-              Object.keys(this.props.currentApplication).length !== 0 ? <ApplicationView/> : <Redirect to="/dashboard"/>  
-            )}/>
+            <Route exact path="/application" render={() => (Object.keys(this.props.currentApplication).length !== 0 ? <ApplicationView/> : <Redirect to="/dashboard"/>)}/>
             <Route component={NotFound}/>
           </Switch>
         </div>
