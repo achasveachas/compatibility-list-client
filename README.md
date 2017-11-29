@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a application built for the Fidelity Payment Services integrations team to help keep track of incoming integration requests.
+This application was built for the Fidelity Payment Services integrations team to help keep track of incoming integration requests.
 
 ## Technical Specs
 
