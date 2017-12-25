@@ -56,8 +56,8 @@ export const login = (user, router) => {
       .then(response => {
         const { user, token } = response;
         localStorage.setItem('token', token);
-        dispatch(authSuccess(user, token))
         dispatch(reset('login'));
+        dispatch(authSuccess(user, token))
         router.history.replace('/dashboard');
       })
       .catch((errors) => {
